@@ -1,0 +1,22 @@
+/* `target text-2xl inline-block font-bold cursor-pointer` */
+
+.container {
+  min-height: 100vh;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  max-width: 800px;
+  margin-inline: auto;
+  padding-inline: 8px;
+}
+
+.target {
+  font-size: 22px;
+  display: inline-block;
+  font-weight: 800;
+  cursor: pointer;
+}
