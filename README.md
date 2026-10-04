@@ -2,6 +2,8 @@
 
 A React component that splits text into words and animates each word the pointer passes over, leaving a trail behind the cursor.
 
+![Words light up and skew as the mouse moves across the text](docs/demo.gif)
+
 ## Use it in your project
 
 The component is a single file with no dependencies besides React:
