@@ -1,5 +1,3 @@
-/* `target text-2xl inline-block font-bold cursor-pointer` */
-
 .container {
   min-height: 100vh;
   padding: 50px 0;
@@ -11,12 +9,8 @@
 .inner {
   max-width: 800px;
   margin-inline: auto;
-  padding-inline: 8px;
-}
-
-.target {
+  padding-inline: 16px;
   font-size: 22px;
-  display: inline-block;
   font-weight: 800;
-  cursor: pointer;
+  word-spacing: 0.5em;
 }

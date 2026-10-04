@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Text Hover Trail
 
-## Getting Started
+A React component that splits text into words and animates each word the pointer passes over, leaving a trail behind the cursor.
 
-First, run the development server:
+## Use it in your project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The component is a single file with no dependencies besides React:
+
+1. Copy [`src/components/TextHoverTrail.tsx`](src/components/TextHoverTrail.tsx) into your project.
+2. Render it:
+
+```tsx
+import TextHoverTrail from "./TextHoverTrail";
+
+export default function Example() {
+  return (
+    <TextHoverTrail
+      as="h1"
+      hoverColor="#e3452c"
+      style={{ fontSize: 32, fontWeight: 800, wordSpacing: "0.4em" }}
+    >
+      Glide your mouse over this sentence
+    </TextHoverTrail>
+  );
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It works in any React 18+ app. The file starts with `"use client"`, so in the Next.js App Router you can render it from a Server Component. In other setups the directive does nothing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If you're not using TypeScript, delete the `TextHoverTrailProps` interface and the type annotations, and save the file as `.jsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Props
 
-## Learn More
+| Prop             | Type                  | Default                        | Description                                              |
+| ---------------- | --------------------- | ------------------------------ | -------------------------------------------------------- |
+| `children`       | `string`              | (required)                     | Text to animate. Any whitespace separates words.          |
+| `as`             | `React.ElementType`   | `"p"`                          | Wrapper element, such as `"h1"`, `"div"` or `"span"`.     |
+| `hoverColor`     | `string`              | `"#2c72e3"`                    | Color of a highlighted word.                              |
+| `hoverTransform` | `string`              | `"scaleX(1.1) skewX(-10deg)"`  | CSS transform of a highlighted word.                      |
+| `enterDuration`  | `number`              | `300`                          | Milliseconds to reach the highlighted state.              |
+| `leaveDuration`  | `number`              | `1500`                         | Milliseconds to return to normal.                         |
+| `className`      | `string`              |                                | Class for the wrapper element.                            |
+| `style`          | `React.CSSProperties` |                                | Inline styles for the wrapper element.                    |
+| `wordClassName`  | `string`              |                                | Class for every word `<span>`.                            |
 
-To learn more about Next.js, take a look at the following resources:
+Words return to the color they inherit, so the text matches your theme in both light and dark mode. Users who have turned on "reduce motion" get the color change but not the transform.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Run the demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Then open [http://localhost:3000](http://localhost:3000).
